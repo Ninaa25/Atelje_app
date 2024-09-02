@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>allowDataLocalInfile</key>
+			<integer>0</integer>
+			<key>database</key>
+			<string>atelje</string>
+			<key>enableClearTextPlugin</key>
+			<integer>0</integer>
+			<key>host</key>
+			<string>localhost</string>
+			<key>name</key>
+			<string>root@localhost</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8mb4</string>
+			<key>contentFilterV2</key>
+			<dict>
+				<key>children</key>
+				<array/>
+				<key>filterClass</key>
+				<string>groupNode</string>
+				<key>isConjunction</key>
+				<true/>
+			</dict>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
+			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRk
+			YXRhgAGtCwwZGhscHSEoLDA0OFUkbnVsbNMNDg8QFBhXTlMua2V5
+			c1pOUy5vYmplY3RzViRjbGFzc6MREhOAAoADgASjFRYXgAWABoAI
+			gAxUdHlwZVRyb3dzVGtleXNfECZTZWxlY3Rpb25EZXRhaWxUeXBl
+			UHJpbWFyeUtleWVkRGV0YWlsc9MNDg8eHyCgoIAH0iIjJCVaJGNs
+			YXNzbmFtZVgkY2xhc3Nlc18QE05TTXV0YWJsZURpY3Rpb25hcnmj
+			JCYnXE5TRGljdGlvbmFyeVhOU09iamVjdNIODykroSqACYAL0g8t
+			Li9ZTlMuc3RyaW5ngApbSURQb3NldGlvY2HSIiMxMl8QD05TTXV0
+			YWJsZVN0cmluZ6MxMydYTlNTdHJpbmfSIiM1Nl5OU011dGFibGVB
+			cnJheaM1NydXTlNBcnJhedIiIyY5oiYnAAgAEQAaACQAKQAyADcA
+			SQBMAFEAUwBhAGcAbgB2AIEAiACMAI4AkACSAJYAmACaAJwAngCj
+			AKgArQDWAN0A3gDfAOEA5gDxAPoBEAEUASEBKgEvATEBMwE1AToB
+			RAFGAVIBVwFpAW0BdgF7AYoBjgGWAZsAAAAAAAACAQAAAAAAAAA6
+			AAAAAAAAAAAAAAAAAAABng==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {758, 643}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>/*
+SQLyog Community v13.1.7 (64 bit)
+MySQL - 10.4.28-MariaDB : Database - atelje
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`atelje` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+
+USE `atelje`;
+
+/*Table structure for table `atelje` */
+
+DROP TABLE IF EXISTS `atelje`;
+
+CREATE TABLE `atelje` (
+  `IDAteljea` int(100) unsigned NOT NULL AUTO_INCREMENT,
+  `Lokacija` varchar(100) NOT NULL,
+  `NazivAteljea` varchar(100) NOT NULL,
+  `IDUmetnika` int(100) unsigned NOT NULL,
+  `IDRadnik` int(100) unsigned NOT NULL,
+  PRIMARY KEY (`IDAteljea`),
+  KEY `FK_ATELJE_UMETNIK` (`IDUmetnika`),
+  KEY `FK_ATELJE_RADNIK` (`IDRadnik`),
+  CONSTRAINT `FK_ATELJE_RADNIK` FOREIGN KEY (`IDRadnik`) REFERENCES `radniksistema` (`IDRadnik`),
+  CONSTRAINT `FK_ATELJE_UMETNIK` FOREIGN KEY (`IDUmetnika`) REFERENCES `umetnik` (`IDUmetnika`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `atelje` */
+
+insert  into `atelje`(`IDAteljea`,`Lokacija`,`NazivAteljea`,`IDUmetnika`,`IDRadnik`) values 
+(13,'Lokacija 1','Atelje 1',1,1),
+(14,'Lokacija 2','Atelje 2',2,1),
+(15,'Lokacija 3','Atelje 3',5,1);
+
+/*Table structure for table `mesto` */
+
+DROP TABLE IF EXISTS `mesto`;
+
+CREATE TABLE `mesto` (
+  `IDMesto` int(100) unsigned NOT NULL AUTO_INCREMENT,
+  `NazivMesta` varchar(100) NOT NULL,
+  PRIMARY KEY (`IDMesto`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `mesto` */
+
+insert  into `mesto`(`IDMesto`,`NazivMesta`) values 
+(1,'Mesto 1'),
+(2,'Mesto 2'),
+(3,'Mesto 3'),
+(4,'Mesto 4'),
+(5,'Mesto 5');
+
+/*Table structure for table `posetaateljeu` */
+
+DROP TABLE IF EXISTS `posetaateljeu`;
+
+CREATE TABLE `posetaateljeu` (
+  `IDPosete` int(100) unsigned NOT NULL AUTO_INCREMENT,
+  `IDPosetioca` int(100) unsigned NOT NULL,
+  `IDTermin` int(100) unsigned NOT NULL,
+  `IDRadnik` int(100) unsigned NOT NULL,
+  PRIMARY KEY (`IDPosete`),
+  KEY `FK_POSETA_POSETIOC` (`IDPosetioca`),
+  KEY `FK_POSETA_TERMIN` (`IDTermin`),
+  KEY `FK_POSETA_RADNIK` (`IDRadnik`),
+  CONSTRAINT `FK_POSETA_POSETIOC` FOREIGN KEY (`IDPosetioca`) REFERENCES `posetilac` (`IDPosetioca`),
+  CONSTRAINT `FK_POSETA_RADNIK` FOREIGN KEY (`IDRadnik`) REFERENCES `radniksistema` (`IDRadnik`),
+  CONSTRAINT `FK_POSETA_TERMIN` FOREIGN KEY (`IDTermin`) REFERENCES `termin` (`IDTermin`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `posetaateljeu` */
+
+insert  into `posetaateljeu`(`IDPosete`,`IDPosetioca`,`IDTermin`,`IDRadnik`) values 
+(8,4,22,1),
+(9,4,18,1),
+(10,4,19,1),
+(13,5,12,1),
+(15,5,14,1),
+(16,5,15,1);
+
+/*Table structure for table `posetilac` */
+
+DROP TABLE IF EXISTS `posetilac`;
+
+CREATE TABLE `posetilac` (
+  `IDPosetioca` int(100) unsigned NOT NULL AUTO_INCREMENT,
+  `ImePrezimePosetioca` varchar(100) NOT NULL,
+  `DatumRodjenja` date NOT NULL,
+  `Kontakt` varchar(100) NOT NULL,
+  `IDMesto` int(100) unsigned NOT NULL,
+  `IDRadnik` int(100) unsigned NOT NULL,
+  PRIMARY KEY (`IDPosetioca`),
+  KEY `FK_POSETILAC_MESTO` (`IDMesto`),
+  KEY `FK_POSETILAC_RADNIK` (`IDRadnik`),
+  CONSTRAINT `FK_POSETILAC_MESTO` FOREIGN KEY (`IDMesto`) REFERENCES `mesto` (`IDMesto`),
+  CONSTRAINT `FK_POSETILAC_RADNIK` FOREIGN KEY (`IDRadnik`) REFERENCES `radniksistema` (`IDRadnik`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `posetilac` */
+
+insert  into `posetilac`(`IDPosetioca`,`ImePrezimePosetioca`,`DatumRodjenja`,`Kontakt`,`IDMesto`,`IDRadnik`) values 
+(1,'Posetilac 1','1989-05-05','Kontak 1',1,1),
+(2,'Posetilac 2','1952-06-06','Kontakt 2',2,2),
+(3,'Posetilac 3','1982-05-20','06012345',5,1),
+(4,'Posetilac 4','1998-06-08','06444444',4,1),
+(5,'Posetilac 5','1998-01-08','kontakt',3,1);
+
+/*Table structure for table `radniksistema` */
+
+DROP TABLE IF EXISTS `radniksistema`;
+
+CREATE TABLE `radniksistema` (
+  `IDRadnik` int(100) unsigned NOT NULL AUTO_INCREMENT,
+  `ImeRadnika` varchar(100) NOT NULL,
+  `PrezimeRadnika` varchar(100) NOT NULL,
+  `KorisnickoIme` varchar(100) NOT NULL,
+  `Lozinka` varchar(100) NOT NULL,
+  PRIMARY KEY (`IDRadnik`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `radniksistema` */
+
+insert  into `radniksistema`(`IDRadnik`,`ImeRadnika`,`PrezimeRadnika`,`KorisnickoIme`,`Lozinka`) values 
+(1,'Radnik 1','Radnik 1','admin','admin'),
+(2,'Radnik 2','Radnik 2','admin2','admin2');
+
+/*Table structure for table `termin` */
+
+DROP TABLE IF EXISTS `termin`;
+
+CREATE TABLE `termin` (
+  `IDAteljea` int(100) unsigned NOT NULL,
+  `IDTermin` int(100) unsigned NOT NULL AUTO_INCREMENT,
+  `VremeTermina` time NOT NULL,
+  `DanUNedelji` varchar(100) NOT NULL,
+  `Cena` double(100,2) NOT NULL,
+  PRIMARY KEY (`IDAteljea`,`IDTermin`),
+  KEY `IDTermin` (`IDTermin`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `termin` */
+
+insert  into `termin`(`IDAteljea`,`IDTermin`,`VremeTermina`,`DanUNedelji`,`Cena`) values 
+(13,11,'20:50:00','Nedelja',125123213.00),
+(13,12,'20:50:00','Utorak',125123213.00),
+(14,13,'20:50:00','Ponedeljak',250.00),
+(14,14,'21:50:00','Ponedeljak',250.00),
+(14,15,'07:50:00','Ponedeljak',250.00),
+(14,16,'07:50:00','Utorak',250.00),
+(14,17,'07:50:00','Cetvrtak',250.00),
+(14,18,'07:50:00','Nedelja',250.00),
+(14,19,'07:50:00','Subota',250.00),
+(15,20,'07:17:00','Ponedeljak',400.00),
+(15,21,'07:17:00','Utorak',400.00),
+(15,22,'07:17:00','Cetvrtak',400.00),
+(15,23,'07:17:00','Sreda',400.00),
+(15,24,'07:17:00','Nedelja',400.00);
+
+/*Table structure for table `umetnik` */
+
+DROP TABLE IF EXISTS `umetnik`;
+
+CREATE TABLE `umetnik` (
+  `IDUmetnika` int(100) unsigned NOT NULL AUTO_INCREMENT,
+  `ImePrezimeUmetnika` varchar(100) NOT NULL,
+  `GodinaRodjenja` int(100) NOT NULL,
+  PRIMARY KEY (`IDUmetnika`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `umetnik` */
+
+insert  into `umetnik`(`IDUmetnika`,`ImePrezimeUmetnika`,`GodinaRodjenja`) values 
+(1,'Umetnik 1',1965),
+(2,'Umetnik 2',1985),
+(3,'Umentik 3',1942),
+(4,'Umetnik 4',1956),
+(5,'Umetnik 5',1972);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+</string>
+			<key>table</key>
+			<string>posetilac</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>155</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.5.5-10.4.28-MariaDB</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
